@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Introduction en haut de l'accueil -->
+    <div class="font-semibold text-2xl text-center pb-6 px-24">
+      {% if nom %}
+        <h1>Bonjour {{ nom }} !</h1>
+      {% else %}
+	    <h1> Bonjour </h1>
+      <p> Invit' Online est un site d'invitations pour se retrouver sur différents loisirs. Pour participer aux activités ou en proposer de nouvelles, créez vous un compte.</p>
+      {% endif %}
+    </div>
+
+    <!-- structure du bloc d'annonces -->
+<section class="grid grid-cols-4 gap-20 p-5">
+  {% for annonce in annonces %}
+    <article class="bg-white shadow-xl border-emerald-200 border-solid border-2 rounded-lg p-3">
+      <a href="/annonce/{{annonce['_id']}}">
+      <h2 class="text-lg text-center pb-1">{{annonce['titre']}}</h2>
+      </a>
+      <hr>
+      <p class="pt-2 text-sm">Activité proposée par <b>{{annonce['auteur']}}</b></p>
+      <p class="pt-4">{{annonce['description']}}</p>
+    </article>
+  {% endfor %}
+</section>
+{% endblock %} 
+
+
+
+

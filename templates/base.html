@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invit' Online</title>
+  <!-- CSS tailwind: https://tailwindcss.com/docs/installation/play-cdn -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+  
+<body class="bg-orange-50">
+  <!-- en-tête du site -->
+  <header class="bg-emerald-200 flex justify-between p-10">
+    <h1 class="text-xl font-semibold">Invit' Online</h1>
+
+        <!-- Menu -->
+    <nav>
+      <ul class="flex space-x-10 text-lg font-semibold">
+        <li><a href="/">ACCUEIL</a></li>
+          {% if session['util'] %}
+            <li><a href="/nouvelle_annonce" class="active">NEW</a></li>
+            <li><a href="/logout" class="active">Se déconnecter</a></li>
+          {% else %}
+            <li><a href="/login" class="active">Se connecter</a></li> 
+            <li><a href="/register" class="active">S'enregistrer</a></li>
+          {% endif %}        
+      </ul>
+    </nav>
+  </header>
+
+  <main class=" pt-10 pb-10">
+    {% block content %}
+
+    {% endblock %}
+  </main>
+
+  <footer class="bg-emerald-200 p-5 text-center">
+    <p>Copyright : Trucmuch©</p>
+    <p>Contact : truchmuch@gmail.com</p>
+  </footer> 
+</body>
+</html>

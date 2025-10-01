@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- structure du bloc d'annonces -->
+<section class="px-48">
+    <article class="bg-white shadow-xl border-emerald-200 border-solid border-2 rounded-lg p-3">
+      <h2 class="text-2xl text-center pb-1">{{annonce['titre']}}</h2>
+      <hr>
+      <p class="pt-2 text-lg">Activité proposée par <b>{{annonce['auteur']}}</b></p>
+      <p class="pt-4 text-lg">{{annonce['description']}}</p>
+    </article>
+</section>
+
+<!-- les commentaires -->
+  <h2 class="text-center text-xl font-semibold pt-5">Commentaires :</h2>
+  <div class="px-48 pt-3">
+    {% for commentaire in commentaires %}
+    <div class="flex justify-start p-5 mb-4 bg-gray-100 border-gray-400 border-solid border-b-2">
+      <div class="border-r-2 border-gray-600 border-solid pr-4">
+        <p class="text-center font-bold text-lg">{{commentaire.auteur}}</p>
+      </div>
+      <div class="flex-1 m-auto pl-4">
+        <p class="text-lg">{{commentaire.description}}</p>
+      </div>
+    </div>
+      {% endfor %}
+
+    <!-- formulaire de commentaire -->
+    <form class="flex items-center" method="POST" action="">
+      <textarea name="description" placeholder=" Votre commentaire ici" class="border border-gray-400 h-16 flex-1 mr-6"></textarea>
+      <button class="w-32 h-12 flex-none bg-emerald-300 hover:bg-emerald-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Commenter</button>
+    </form>
+{% endblock %} 
